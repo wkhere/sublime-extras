@@ -1,0 +1,6 @@
+sublime-plugins
+===============
+
+My plugins for the Sublime editor.
+
+Put ones you want to use in ~/.config/sublime-text*/Packages/User/ .
