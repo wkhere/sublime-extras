@@ -1,5 +1,5 @@
 #
-# put it in ~/.config/sublime-text/Packages/User/
+# put it in ~/.config/sublime-text*/Packages/User/
 
 import sublime, sublime_plugin
 
