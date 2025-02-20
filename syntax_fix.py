@@ -4,6 +4,7 @@ BufSize = max(
     len('#!/usr/local/bin rubyN.NN.NN'), 
     len('#!/usr/bin/env rubyN.NN.NN'),
     len('#!/usr/local/bin awk -f'),
+    len('exec '),
 )
 
 
@@ -17,3 +18,6 @@ class SyntaxFix(sublime_plugin.EventListener):
 
         elif '/bin/awk' in buf or '/bin/env awk' in buf:
             view.settings().set('syntax', 'Packages/Awk/Awk.sublime-syntax')
+
+        elif buf.startswith('exec '):
+            view.settings().set('syntax', 'Packages/ShellScript/Bash.sublime-syntax')
