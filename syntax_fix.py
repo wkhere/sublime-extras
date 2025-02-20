@@ -3,6 +3,7 @@ import sublime, sublime_plugin
 BufSize = max(
     len('#!/usr/local/bin rubyN.NN.NN'), 
     len('#!/usr/bin/env rubyN.NN.NN'),
+    len('#!/usr/local/bin awk -f'),
 )
 
 
@@ -13,3 +14,6 @@ class SyntaxFix(sublime_plugin.EventListener):
 
         if '/bin/ruby' in buf or '/bin/env ruby' in buf:
            view.settings().set('syntax', 'Packages/Ruby/Ruby.sublime-syntax')
+
+        elif '/bin/awk' in buf or '/bin/env awk' in buf:
+            view.settings().set('syntax', 'Packages/Awk/Awk.sublime-syntax')
