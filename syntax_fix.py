@@ -13,15 +13,16 @@ class SyntaxFix(sublime_plugin.EventListener):
 
     def on_load(self, view):
         buf = view.substr(sublime.Region(0, BufSize))
+        st  = view.settings()
 
         if '/bin/ruby' in buf or '/bin/env ruby' in buf:
-           view.settings().set('syntax', 'Packages/Ruby/Ruby.sublime-syntax')
+           st.set('syntax', 'Packages/Ruby/Ruby.sublime-syntax')
 
         elif '/bin/awk' in buf or '/bin/env awk' in buf:
-            view.settings().set('syntax', 'Packages/Awk/Awk.sublime-syntax')
+            st.set('syntax', 'Packages/Awk/Awk.sublime-syntax')
 
         elif buf.startswith('exec '):
-            view.settings().set('syntax', 'Packages/ShellScript/Bash.sublime-syntax')
+            st.set('syntax', 'Packages/ShellScript/Bash.sublime-syntax')
 
         elif '/bin/expect' in buf or '/bin/env expect' in buf:
-            view.settings().set('syntax', 'Packages/TCL/Tcl.sublime-syntax')
+            st.set('syntax', 'Packages/TCL/Tcl.sublime-syntax')
