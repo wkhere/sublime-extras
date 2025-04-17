@@ -6,6 +6,9 @@ BufSize = max(
     len('#!/usr/local/bin awk -f'),
     len('exec '),
     len('#!/usr/local/bin/expect'),
+    80 + len('#include "textflag.h"'),
+    80 + len('#include "go_asm.h"'),
+    80 + len('.global'),
 )
 
 
@@ -26,3 +29,9 @@ class SyntaxFix(sublime_plugin.EventListener):
 
         elif '/bin/expect' in buf or '/bin/env expect' in buf:
             st.set('syntax', 'Packages/TCL/Tcl.sublime-syntax')
+
+        elif '"textflag.h"' in buf or '"go_asm.h"' in buf:
+            st.set('syntax', 'Packages/sublime-goasm/Goasm.sublime-syntax')
+
+        elif '.global' in buf:
+            st.set('syntax', 'Packages/ARM Assembly/Syntaxes/ARM Assembly.tmLanguage')
