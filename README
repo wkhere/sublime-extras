@@ -1,7 +1,11 @@
-sublime-plugins
-===============
+sublime-extras
+==============
 
-My plugins for the Sublime editor.
+My stuff for the Sublime editor:
+
+* plugins
+* substitutions of code in std packages
+* build definitions
 
 Put ones you want to use in ~/.config/sublime-text*/Packages/User/ ,
 or ~/Library/Application*Support/Sublime*Text/Packages/User/ on darwin. 
