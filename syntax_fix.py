@@ -9,6 +9,7 @@ BufSize = max(
     80 + len('#include "textflag.h"'),
     80 + len('#include "go_asm.h"'),
     80 + len('.global'),
+    80 + len('package foobar'),
 )
 
 
@@ -35,3 +36,7 @@ class SyntaxFix(sublime_plugin.EventListener):
 
         elif '.global' in buf:
             st.set('syntax', 'Packages/ARM Assembly/Syntaxes/ARM Assembly.tmLanguage')
+
+        elif (buf.startswith('package') or '\npackage ' in buf) and \
+          ('import (\n' in buf or 'import "' in buf):
+          st.set('syntax', 'Packages/Go/Go.sublime-syntax')
