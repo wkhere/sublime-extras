@@ -31,12 +31,9 @@ class SyntaxFix(sublime_plugin.EventListener):
         elif '/bin/expect' in buf or '/bin/env expect' in buf:
             st.set('syntax', 'Packages/TCL/Tcl.sublime-syntax')
 
-        elif '"textflag.h"' in buf or '"go_asm.h"' in buf:
+        elif '"textflag.h"' in buf or '"go_asm.h"' in buf or '.global' in buf:
             # requires github.com/mitranim/sublime-asm cloned in Packages
             st.set('syntax', 'Packages/sublime-asm/asm.sublime-syntax')
-
-        elif '.global' in buf:
-            st.set('syntax', 'Packages/ARM Assembly/Syntaxes/ARM Assembly.tmLanguage')
 
         elif (buf.startswith('package') or '\npackage ' in buf) and \
           ('import (\n' in buf or 'import "' in buf):
