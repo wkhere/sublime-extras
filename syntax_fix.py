@@ -32,7 +32,8 @@ class SyntaxFix(sublime_plugin.EventListener):
             st.set('syntax', 'Packages/TCL/Tcl.sublime-syntax')
 
         elif '"textflag.h"' in buf or '"go_asm.h"' in buf:
-            st.set('syntax', 'Packages/sublime-goasm/Goasm.sublime-syntax')
+            # requires github.com/mitranim/sublime-asm cloned in Packages
+            st.set('syntax', 'Packages/sublime-asm/asm.sublime-syntax')
 
         elif '.global' in buf:
             st.set('syntax', 'Packages/ARM Assembly/Syntaxes/ARM Assembly.tmLanguage')
