@@ -1,0 +1,84 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+# http://www.sublimetext.com/docs/3/scope_naming.html
+name: EBNF
+file_extensions:
+  - ebnf
+scope: source.ebnf
+
+variables:
+  name: '[A-Za-z](?:-?[A-Za-z0-9_])*'
+contexts:
+  main:
+    - match: '(^{{name}})'
+      scope: entity.name.rule.ebnf
+
+    - match: '=/?'
+      scope: keyword.operator.assignment.ebnf
+
+    - match: '(ALPHA|BIT|CHAR|CR|CRLF|CTL|DIGIT|DQUOTE|HEXDIG|HTAB|LF|LWSP|OCTET|SP|VCHAR|WSP)(--{{name}}(?:\x28[^\x29]*\x29)?)?'
+      captures:
+        1: support.type.rule.ebnf
+        2: support.function.ebnf
+
+    - match: '(to--)({{name}}(?:\x28[^\x29]*\x29)?)'
+      captures:
+        1: keyword.control.ebnf
+        2: support.function.ebnf
+
+    - match: '({{name}})(--{{name}}(?:\x28[^\x29]*\x29)?)?'
+      captures:
+        1: variable.other.constant.ebnf
+        2: support.function.ebnf
+
+    - match: '\s*%b[01]+((-[01]+)|(\.[01]+)*)\s*'
+      scope: constant.numeric.binary.ebnf
+
+    - match: '\s*%d[0-9]+((-[0-9]+)|(\.[0-9]+)*)\s*'
+      scope: constant.numeric.decimal.ebnf
+
+    - match: '\s*%x[0-9A-Fa-f]+((-[0-9A-Fa-f]+)|(\.[0-9A-Fa-f]+)*)\s*'
+      scope: constant.numeric.hexadecimal.ebnf
+
+    - match: '\s*%s'
+      scope: storage.modifier.case-sensitive.ebnf
+    - match: '\s*%i'
+      scope: storage.modifier.case-insensitive.ebnf
+
+    - match: '[0-9]+'
+      scope: constant.numeric.integer.ebnf
+    - match: '\s*\*\s*'
+      scope: keyword.operator.repeat.ebnf
+    - match: '\s*/\s*'
+      scope: keyword.operator.or.ebnf
+    - match: '\s*\(\s*'
+      scope: punctuation.bracket.round.begin.ebnf
+    - match: '\s*\)\s*'
+      scope: punctuation.bracket.round.end.ebnf
+    - match: '\s*\[\s*'
+      scope: punctuation.bracket.square.begin.ebnf
+    - match: '\s*\]\s*'
+      scope: punctuation.bracket.square.end.ebnf
+
+    - match: '\s*((<)[^>]*(>))\s*'
+      captures:
+        1: string.quoted.angle.ebnf
+        2: punctuation.definition.prose.begin.ebnf
+        3: punctuation.definition.prose.end.ebnf
+
+    - match: '\s*((")[^"]*("))\s*'
+      captures:
+        1: string.quoted.double.ebnf
+        2: punctuation.definition.string.begin.ebnf
+        3: punctuation.definition.string.end.ebnf
+
+    - match: '\s*((\x27)[^\x27]*(\x27))\s*'
+      captures:
+        1: string.quoted.double.ebnf
+        2: punctuation.definition.string.begin.ebnf
+        3: punctuation.definition.string.end.ebnf
+
+    - match: '\s*(;.*)$'
+      captures:
+        1: comment.line.semi-colon.ebnf
