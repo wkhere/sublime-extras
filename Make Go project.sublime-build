@@ -1,7 +1,7 @@
 {
 	"shell_cmd": "make",
 	// note: the regex below requires 'go test -fullpath ...' to parse tests output
-	"file_regex": "^(?:[a-z]+:)?[ \t]*(..[^:\n]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	"file_regex": "^(?:vet:)?[ \t]*(..[^:\n]*):([0-9]+):([0-9]+)?:? (.*)$",
 	"working_dir": "${folder:${project_path:${file_path}}}",
 	"selector": "source.makefile",
 	"syntax": "Packages/Makefile/Make Output.sublime-syntax",
